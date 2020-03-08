@@ -4,9 +4,13 @@ import degree_distribution
  
 # read all the 5 csv files
 # keep only the distinct pairs of source target since we will ignore the books and the weights
- 
-all_books = ["book1.csv", "book2.csv", "book3.csv", "book4.csv", "book5.csv"]
- 
+# all_books = ["book1.csv", "book2.csv", "book3.csv", "book4.csv", "book5.csv"]
+
+# flights
+# all_books = ["flights.csv"]
+
+# star wars
+all_books = ["star-wars.csv"]
 li = []
  
 for f in all_books:
@@ -15,13 +19,23 @@ for f in all_books:
  
 df = pd.concat(li, axis=0, ignore_index=True)
  
-df = df[['Source', 'Target']]
-df.drop_duplicates(subset=['Source', 'Target'], inplace=True)
+# df = df[['Source', 'Target']]
+# df.drop_duplicates(subset=['Source', 'Target'], inplace=True)
+
+# flights
+# df = df[['Origin', 'Dest']]
+# df.drop_duplicates(subset=['Origin', 'Dest'], inplace=True)
+
+# star wars
+df = df[['source', 'target']]
+df.drop_duplicates(subset=['source', 'target'], inplace=True)
 
 #print(df.head(20))
  
 # create the ASOIAF networkx object
-G = nx.from_pandas_edgelist(df,  source='Source', target='Target')
+# G = nx.from_pandas_edgelist(df,  source='Source', target='Target')
+# G = nx.from_pandas_edgelist(df,  source='Origin', target='Dest')
+G = nx.from_pandas_edgelist(df,  source='source', target='target')
 
 # create a random graph networkx object
 #G = nx.erdos_renyi_graph(len(G.nodes()), 2*len(G.edges())/(len(G.nodes())*(len(G.nodes())-1)))

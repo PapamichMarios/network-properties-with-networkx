@@ -1,0 +1,16 @@
+Number of nodes: 21
+
+
+Number of edges: 60
+
+
+Connected components: 1 (size: 21)
+
+
+Average shortest path: 1.909524
+
+
+Diameter: 3
+
+
+Average clustering coefficient: 0.661204
